@@ -1,1 +1,1 @@
-export { PROTO_PATHS } from "./proto";
+export { PROTO_PATHS } from './proto'

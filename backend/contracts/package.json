@@ -1,6 +1,6 @@
 {
   "name": "@budgetro/contracts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Protobuf definitions and generated TypeScript types",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -21,5 +21,9 @@
     "@nestjs/microservices": "^11.1.24",
     "rxjs": "^7.8.2",
     "ts-proto": "^2.11.8"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typescript": "^6.0.3"
   }
 }
