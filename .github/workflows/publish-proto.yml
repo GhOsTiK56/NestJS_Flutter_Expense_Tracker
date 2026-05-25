@@ -28,6 +28,9 @@ jobs:
             - name: Install protobuf compiler
               run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
 
+            - name: Build
+              working-directory: backend/contracts
+              run: yarn run build
             - name: Generate TS Protobuf
               working-directory: backend/contracts
               run: yarn run generate
