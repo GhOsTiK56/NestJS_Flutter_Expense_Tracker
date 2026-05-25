@@ -1,0 +1,74 @@
+{
+  "@@locale": "en",
+
+  "signUpPage": "Sign Up Page",
+  "logInPage": "Log in Page",
+  "signUp": "Sign Up",
+  "logIn": "Login",
+  "logInPageText": "To log in to the app, enter your Email and password.",
+  "signUpPageText": "To Sign Up to the app, enter your Name, Email and password, or continue with Google or Yandex",
+
+  "name": "First Name",
+  "email": "Email",
+  "password": "Password",
+  
+  "nameHint": "Enter First Name",
+  "emailHint": "Enter Email Adress",
+  "passwordHint": "Enter Password",
+
+  "emailInvalid": "Please enter a valid Email adress",
+
+  "or": "OR",
+
+  "fieldRequired": "{fieldName} is required",
+  "@fieldRequired": {
+    "description": "Generic validation message for required fields",
+    "placeholders": {
+      "fieldName": {
+        "type": "String",
+        "example": "First name"
+      }
+    }
+  },
+  "fieldTooShort": "{fieldName} must contain at least {charactersContains} characters",
+  "@fieldTooShort": {
+    "description": "Generic validation message for minimum length",
+    "placeholders": {
+      "fieldName": {
+        "type": "String",
+        "example": "First Name"
+      },
+      "charactersContains": {
+        "type": "int",
+        "example": "2"
+      }
+    }
+  },
+  "nameLettersOnly": "{fieldName} must contain only letters",
+  "@nameLettersOnly": {
+    "description": "Generic validation message for only letters support",
+    "placeholders": {
+      "fieldName": {
+        "type": "String",
+        "example": "First Name"
+      }
+    }
+  },
+
+
+
+  "@emailInvalid": {},
+  "@signUpPage": {},
+  "@logInPage": {},
+  "@signUp": {},
+  "@logIn": {},
+  "@logInPageText": {},
+  "@signUpPageText": {},
+  "@name": {},
+  "@nameHint": {},
+  "@email": {},
+  "@emailHint": {},
+  "@password": {},
+  "@passwordHint": {},
+  "@or": {}
+}
