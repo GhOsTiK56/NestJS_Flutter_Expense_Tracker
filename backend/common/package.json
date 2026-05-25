@@ -1,0 +1,23 @@
+{
+  "name": "@budgetro/common",
+  "version": "1.0.0",
+  "description": "Core shared components for Budgetro microservice ecosystem",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "format": "prettier --write \"src/**/*.ts\""
+  },
+  "devDependencies": {
+    "@budgetro/core": "^1.0.0",
+    "@types/node": "^25.9.1",
+    "prettier": "^3.8.3",
+    "typescript": "^6.0.3"
+  }
+}
