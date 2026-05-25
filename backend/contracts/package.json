@@ -1,7 +1,7 @@
 {
   "name": "@budgetro/contracts",
   "version": "1.0.0",
-  "description": "Protobuf definitions and generated TypeScript types ",
+  "description": "Protobuf definitions and generated TypeScript types",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
