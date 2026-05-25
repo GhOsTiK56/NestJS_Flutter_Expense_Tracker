@@ -1,0 +1,25 @@
+{
+  "name": "@budgetro/contracts",
+  "version": "1.0.0",
+  "description": "Protobuf definitions and generated TypeScript types ",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "proto:gen": "protoc -I ./proto ./proto/*.proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
+  },
+  "files": [
+    "dist",
+    "proto",
+    "gen"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "dependencies": {
+    "@nestjs/microservices": "^11.1.24",
+    "rxjs": "^7.8.2",
+    "ts-proto": "^2.11.8"
+  }
+}

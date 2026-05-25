@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package auth.v1;
+
+service AuthService {
+    rpc SignUp (SignUpRequest) returns (SignUpResponse);
+    rpc SendOtp (SendOtpRequest) returns (SendOtpResponse);
+    rpc VerifyOtp (VerifyOtpRequest) returns (VerifyOtpResponse);
+}
+
+message SendOtpRequest {
+    string identifier = 1;
+    string identifier_type = 2;
+}
+
+message SendOtpResponse {
+    bool ok = 1;
+}
+
+message SignUpRequest {
+    string name = 1;
+    string identifier = 2;
+    string identifier_type = 3;
+    string password = 4;
+}
+
+message SignUpResponse {
+    bool ok = 1;
+}
+
+message VerifyOtpRequest {
+    string identifier = 1;
+    string identifier_type = 2;
+    string code = 3;
+}
+
+message VerifyOtpResponse {
+    string access_token = 1;
+    string refresh_token = 2;
+} 
