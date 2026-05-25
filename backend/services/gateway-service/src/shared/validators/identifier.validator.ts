@@ -1,0 +1,35 @@
+import {
+	ValidationArguments,
+	ValidatorConstraint,
+	type ValidatorConstraintInterface
+} from 'class-validator'
+
+import { SendOtpRequest } from '../../modules/auth/dto'
+
+@ValidatorConstraint({ name: 'IdentifierValidator', async: false })
+export class IdentifierValidator implements ValidatorConstraintInterface {
+	public validate(value: string, args: ValidationArguments): boolean {
+		const object = args.object as SendOtpRequest
+
+		if (object.identifierType === 'email') {
+			return (
+				typeof value === 'string' &&
+				/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+			)
+		} else if (object.identifierType === 'phone') {
+			return typeof value === 'string' && /^\+?\d{10,15}$/.test(value)
+		}
+		return false
+	}
+
+	public defaultMessage(args: ValidationArguments): string {
+		const object = args.object as SendOtpRequest
+
+		if (object.identifierType === 'email')
+			return 'Identifier must be a valid email'
+		if (object.identifierType === 'phone')
+			return 'Identifier must be a valid phone number'
+
+		return 'Invalid identifier'
+	}
+}
