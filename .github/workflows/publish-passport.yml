@@ -22,15 +22,15 @@ jobs:
                 registry-url: 'https://registry.npmjs.org'
 
             - name: Install deps
-              working-directory: backend/passports
+              working-directory: backend/passport
               run: yarn install --frozen-lockfile
 
             - name: Build
-              working-directory: backend/passports
+              working-directory: backend/passport
               run: yarn run build
 
             - name: Publish package
-              working-directory: backend/passports
+              working-directory: backend/passport
               run: npm publish
               env:
                 NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
