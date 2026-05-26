@@ -1,4 +1,4 @@
-import { RpcStatus } from '@ghostik/common'
+import { RpcStatus } from '@budgetro/common'
 import { Injectable } from '@nestjs/common'
 import { RpcException } from '@nestjs/microservices'
 import { createHash } from 'node:crypto'

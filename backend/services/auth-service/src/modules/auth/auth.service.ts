@@ -1,9 +1,9 @@
-import { RpcStatus } from '@ghostik/common'
+import { RpcStatus } from '@budgetro/common'
 import type {
 	SendOtpRequest,
 	SignUpRequest,
 	VerifyOtpRequest
-} from '@ghostik/contracts/gen/auth'
+} from '@budgetro/contracts/gen/auth'
 import { Injectable } from '@nestjs/common'
 import { RpcException } from '@nestjs/microservices'
 import { createHash } from 'crypto'

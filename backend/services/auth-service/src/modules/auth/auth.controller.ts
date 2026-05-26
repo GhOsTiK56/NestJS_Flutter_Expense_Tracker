@@ -5,7 +5,7 @@ import type {
 	SignUpResponse,
 	VerifyOtpRequest,
 	VerifyOtpResponse
-} from '@ghostik/contracts/gen/auth'
+} from '@budgetro/contracts/gen/auth'
 import { Controller } from '@nestjs/common'
 import { GrpcMethod } from '@nestjs/microservices'
 
