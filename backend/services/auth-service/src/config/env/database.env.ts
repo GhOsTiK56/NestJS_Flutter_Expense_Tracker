@@ -1,10 +1,11 @@
 import { registerAs } from '@nestjs/config'
 
-import { validateEnv } from '../../shared/utils'
+import { validateEnv } from '@/shared/utils'
+
 import { DataBaseConfig } from '../interfaces/database.interface'
 import { DataBaseValidator } from '../validators'
 
-export const dataBaseEnv = registerAs<DataBaseConfig>('grpc', () => {
+export const dataBaseEnv = registerAs<DataBaseConfig>('database', () => {
 	validateEnv(process.env, DataBaseValidator)
 
 	return {

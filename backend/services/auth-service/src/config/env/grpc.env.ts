@@ -1,6 +1,7 @@
 import { registerAs } from '@nestjs/config'
 
-import { validateEnv } from '../../shared/utils'
+import { validateEnv } from '@/shared/utils'
+
 import { GrpcConfig } from '../interfaces/grpc.interface'
 import { GrpcValidator } from '../validators'
 
