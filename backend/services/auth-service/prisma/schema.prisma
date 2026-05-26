@@ -14,11 +14,11 @@ model Account {
   phone String? @unique
   email String? @unique
 
-  name String
+  name     String
   password String
 
-  isPhoneVerified Boolean @default(false) @map("is_phone_verified") 
-  isEmailVerified Boolean @default(false) @map("is_email_verified") 
+  isPhoneVerified Boolean @default(false) @map("is_phone_verified")
+  isEmailVerified Boolean @default(false) @map("is_email_verified")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
