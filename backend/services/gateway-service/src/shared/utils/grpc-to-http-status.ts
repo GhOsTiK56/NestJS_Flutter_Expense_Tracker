@@ -1,4 +1,4 @@
-import { RpcStatus } from '@ghostik/common'
+import { RpcStatus } from '@budgetro/common'
 import { HttpStatus } from '@nestjs/common'
 
 export const grpcToHttpStatus: Record<number, number> = {

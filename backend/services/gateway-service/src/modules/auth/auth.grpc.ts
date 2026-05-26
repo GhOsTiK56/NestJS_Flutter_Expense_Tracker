@@ -3,7 +3,7 @@ import type {
 	SendOtpRequest,
 	SignUpRequest,
 	VerifyOtpRequest
-} from '@ghostik/contracts/gen/auth'
+} from '@budgetro/contracts/gen/auth'
 import { Inject, Injectable, OnModuleInit } from '@nestjs/common'
 import type { ClientGrpc } from '@nestjs/microservices'
 

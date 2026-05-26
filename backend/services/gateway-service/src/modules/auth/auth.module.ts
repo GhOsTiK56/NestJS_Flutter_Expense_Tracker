@@ -1,4 +1,4 @@
-import { PROTO_PATHS } from '@ghostik/contracts'
+import { PROTO_PATHS } from '@budgetro/contracts'
 import { Module } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { ClientsModule, Transport } from '@nestjs/microservices'
