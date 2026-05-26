@@ -1,7 +1,7 @@
 {
   "name": "@budgetro/passport",
   "version": "1.0.0",
-  "description": "Lightweight Budgetro authentication library",
+  "description": "Lightweight Budgetro authentication library ",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
