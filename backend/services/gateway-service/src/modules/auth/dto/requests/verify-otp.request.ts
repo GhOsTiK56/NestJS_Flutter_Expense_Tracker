@@ -14,7 +14,7 @@ import { IdentifierType } from './send-otp.request'
 
 export class VerifyOtpRequest {
 	@ApiProperty({
-		example: '+71234567890'
+		example: 'karen@gmail.com'
 	})
 	@IsString()
 	@Validate(IdentifierValidator)
@@ -29,7 +29,7 @@ export class VerifyOtpRequest {
 	public code!: string
 
 	@ApiProperty({
-		example: 'phone',
+		example: 'email',
 		enum: ['phone', 'email']
 	})
 	@IsEnum(IdentifierType)
