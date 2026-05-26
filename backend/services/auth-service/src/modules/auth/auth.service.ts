@@ -1,5 +1,7 @@
 import { RpcStatus } from '@budgetro/common'
 import type {
+	LogoutRequest,
+	RefreshRequest,
 	SendOtpRequest,
 	SignUpRequest,
 	VerifyOtpRequest
@@ -127,10 +129,69 @@ export class AuthService {
 				isEmailVerified: true
 			})
 
-		return this.generateTokens(account.id)
+		return await this.generateTokens(account.id)
 	}
 
-	private generateTokens(userId: string) {
+	public async refresh(data: RefreshRequest) {
+		const { refreshToken } = data
+
+		const result = this.passportService.verify(refreshToken)
+
+		if (!result.valid) {
+			throw new RpcException({
+				code: RpcStatus.UNAUTHENTICATED,
+				details: result.reason
+			})
+		}
+
+		const refreshTokenHash = this.hashToken(refreshToken)
+		const storedToken =
+			await this.authRepository.findRefreshTokenByHash(refreshTokenHash)
+
+		if (
+			!storedToken ||
+			storedToken.revoked ||
+			storedToken.expiresAt.getTime() <= Date.now()
+		) {
+			throw new RpcException({
+				code: RpcStatus.UNAUTHENTICATED,
+				details: 'Refresh token invalid or expired'
+			})
+		}
+
+		if (storedToken.accountId !== result.userId) {
+			throw new RpcException({
+				code: RpcStatus.UNAUTHENTICATED,
+				details: 'Refresh token does not belong to this user'
+			})
+		}
+
+		await this.authRepository.revokeRefreshToken(storedToken.id)
+
+		return await this.generateTokens(result.userId)
+	}
+
+	public async logout(data: LogoutRequest) {
+		const { refreshToken } = data
+
+		if (!refreshToken) return { ok: true }
+
+		const result = this.passportService.verify(refreshToken)
+
+		if (!result.valid) return { ok: true }
+
+		const refreshTokenHash = this.hashToken(refreshToken)
+		const storedToken =
+			await this.authRepository.findRefreshTokenByHash(refreshTokenHash)
+
+		if (storedToken && !storedToken.revoked) {
+			await this.authRepository.revokeRefreshToken(storedToken.id)
+		}
+
+		return { ok: true }
+	}
+
+	private async generateTokens(userId: string) {
 		const payload: TokenPayload = { sub: userId }
 
 		const accessToken = this.passportService.generate(
@@ -143,6 +204,21 @@ export class AuthService {
 			this.REFRESH_TOKEN_TTL
 		)
 
+		const expiresAt = new Date(Date.now() + this.REFRESH_TOKEN_TTL * 1000)
+		const refreshTokenHash = this.hashToken(refreshToken)
+
+		await this.authRepository.createRefreshToken({
+			account: {
+				connect: { id: userId }
+			},
+			tokenHash: refreshTokenHash,
+			expiresAt
+		})
+
 		return { accessToken, refreshToken }
+	}
+
+	private hashToken(token: string) {
+		return createHash('sha256').update(token).digest('hex')
 	}
 }
