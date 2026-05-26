@@ -7,6 +7,7 @@ service AuthService {
   rpc SendOtp(SendOtpRequest) returns (SendOtpResponse);
   rpc VerifyOtp(VerifyOtpRequest) returns (VerifyOtpResponse);
   rpc Refresh(RefreshRequest) returns (RefreshResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
 
 message SendOtpRequest {
@@ -41,4 +42,13 @@ message RefreshRequest { string refresh_token = 1; }
 message RefreshResponse {
   string access_token = 1;
   string refresh_token = 2;
+}
+
+message LogoutRequest {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message LogoutResponse {
+  bool ok = 1;
 }
