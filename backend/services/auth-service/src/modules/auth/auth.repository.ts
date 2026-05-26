@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common'
-import { Account } from '@prisma/generated/client'
+import { Account, RefreshToken } from '@prisma/generated/client'
 import {
 	AccountCreateInput,
-	AccountUpdateInput
+	AccountUpdateInput,
+	RefreshTokenCreateInput
 } from '@prisma/generated/models'
 
 import { PrismaService } from '@/infrastructure/prisma/prisma.service'
@@ -42,6 +43,35 @@ export class AuthRepository {
 				id
 			},
 			data
+		})
+	}
+
+	public async createRefreshToken(
+		data: RefreshTokenCreateInput
+	): Promise<RefreshToken> {
+		return await this.prismaService.refreshToken.create({
+			data
+		})
+	}
+
+	public async findRefreshTokenByHash(
+		tokenHash: string
+	): Promise<RefreshToken | null> {
+		return await this.prismaService.refreshToken.findUnique({
+			where: {
+				tokenHash
+			}
+		})
+	}
+
+	public async revokeRefreshToken(id: string): Promise<RefreshToken> {
+		return await this.prismaService.refreshToken.update({
+			where: {
+				id
+			},
+			data: {
+				revoked: true
+			}
 		})
 	}
 }

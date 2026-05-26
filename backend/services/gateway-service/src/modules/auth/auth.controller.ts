@@ -3,6 +3,8 @@ import { ApiOperation } from '@nestjs/swagger'
 
 import { AuthClientGrpc } from './auth.grpc'
 import { SendOtpRequest, SignUpRequest, VerifyOtpRequest } from './dto'
+import { RefreshTokenRequest } from './dto/requests/refresh-token.request'
+import { LogoutRequest } from './dto/requests/logout.request';
 
 @Controller('auth')
 export class AuthController {
@@ -37,5 +39,25 @@ export class AuthController {
 	@HttpCode(HttpStatus.OK)
 	public verifyOtp(@Body() dto: VerifyOtpRequest) {
 		return this.client.verifyOtp(dto)
+	}
+
+	@ApiOperation({
+		summary: 'Refresh access and refresh tokens',
+		description: 'Renews access and refresh tokens'
+	})
+	@Post('refresh')
+	@HttpCode(HttpStatus.OK)
+	public async refresh(@Body() dto: RefreshTokenRequest) {
+		return this.client.refresh(dto)
+	}
+
+	@ApiOperation({
+		summary: 'Logout',
+		description: 'Clears the refresh token and logs the user out'
+	})
+	@Post('logout')
+	@HttpCode(HttpStatus.OK)
+	public async logout(@Body() dto: LogoutRequest) {
+		return this.client.logout(dto)
 	}
 }
