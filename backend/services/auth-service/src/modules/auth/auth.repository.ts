@@ -74,4 +74,23 @@ export class AuthRepository {
 			}
 		})
 	}
+
+	public async revokeAllActiveRefreshTokens(
+		accountId: string
+	): Promise<{ count: number }> {
+		const result = await this.prismaService.refreshToken.updateMany({
+			where: {
+				accountId,
+				revoked: false,
+				expiresAt: {
+					gt: new Date()
+				}
+			},
+			data: {
+				revoked: true
+			}
+		})
+
+		return { count: result.count }
+	}
 }

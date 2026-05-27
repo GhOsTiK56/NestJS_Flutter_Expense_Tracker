@@ -315,10 +315,10 @@
   resolved "https://registry.yarnpkg.com/@budgetro/common/-/common-1.0.0.tgz#e00a51140896a4ca764dea5869c8c8fc6d9050af"
   integrity sha512-PPTOszKqxL2JaZzqfDZw8xeWFFvjlJmaZF/aw3DempkStN1rfBQKUmB5fy09cbinLwbA4ZeSTUXdS/GZxHxDYQ==
 
-"@budgetro/contracts@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.0.6.tgz#ef8ef1abfb45dfa01e4494b008e710bd9c114a67"
-  integrity sha512-A/XxeTkfQ336CWhN+Mwxet5xEUb3+sK8++nzi8aEw3rJgZHUein/Xk9N8p/TVaYH0Zh2p97DBeD4xwQBkxi0Eg==
+"@budgetro/contracts@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.0.9.tgz#1701a198d5035f315dcfbb42ce243ac9be409bc5"
+  integrity sha512-NiUI2DsnyroLKUL9rDOCNDPgsyf29pbmDU7j/cENYexsLH5gf7+3EjGWhUfJ/Y1g+tdmsi8C4QCdyUDYt9p9gw==
   dependencies:
     "@nestjs/microservices" "^11.1.24"
     rxjs "^7.8.2"
@@ -330,6 +330,16 @@
   integrity sha512-V/O5tX/VAiLYRHaUnAkp3SEQKyiy69bELzb7e9/35d3dFgt16Mquw+GZQhm2W/FlPKhcKXPw6d/6zuudClSGow==
   dependencies:
     "@trivago/prettier-plugin-sort-imports" "^5.2.2"
+
+"@budgetro/passport@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@budgetro/passport/-/passport-1.0.0.tgz#3059a1f568e1809722920d8f111948bf2bbe9d99"
+  integrity sha512-alNPy47jlwMBbC6D/gOO2LqFLT+oIJdwpWoyodSND2B9IPXs5v2rnfh4COOop25pDr9VKcmWvB8A3SI1y+rFJQ==
+  dependencies:
+    "@nestjs/common" "^11.1.24"
+    "@nestjs/core" "^11.1.24"
+    reflect-metadata "^0.2.2"
+    txjs "^0.1.1"
 
 "@bufbuild/protobuf@^2.0.0", "@bufbuild/protobuf@^2.10.2":
   version "2.12.0"
@@ -991,7 +1001,7 @@
     webpack "5.106.0"
     webpack-node-externals "3.0.0"
 
-"@nestjs/common@^11.0.1":
+"@nestjs/common@^11.0.1", "@nestjs/common@^11.1.24":
   version "11.1.24"
   resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-11.1.24.tgz#0665208a5e7658ddf2182dd248bdc04bb27277da"
   integrity sha512-9zHxaDDM+oXW9As6UsP5yYB+UqczBmpeSCIFWdPEtEukMnZhxODG1BBjaUcdBB8Sc1uzojSJSJlp3yFp853t1g==
@@ -1011,7 +1021,7 @@
     dotenv-expand "12.0.3"
     lodash "4.18.1"
 
-"@nestjs/core@^11.0.1":
+"@nestjs/core@^11.0.1", "@nestjs/core@^11.1.24":
   version "11.1.24"
   resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-11.1.24.tgz#054180df61ab539dbfb1f949ab945fb390f8a747"
   integrity sha512-K4bzT+lEdd0Hhcsw3jtk56QAW6s6skK3ViN7hIROSN0kUf4ROwWEAKopJID6yhPQxB45kDtP2wEcjzE8171J3g==
@@ -4979,6 +4989,11 @@ tslib@2.8.1, tslib@^2.1.0, tslib@^2.4.0:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.8.1.tgz#612efe4ed235d567e8aba5f2a5fab70280ade83f"
   integrity sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==
+
+txjs@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/txjs/-/txjs-0.1.1.tgz#4374cc568fc771f8a75aa29ed7e95b35cb2202a1"
+  integrity sha512-rZNaL5/xixAdNh6nUGHWrfDxCkCtqAWECcbKuIgSiEyRYAc0yW5zIpiE5Sum9yQrR4E9jKkAykcQ+3CuwX8LvA==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"

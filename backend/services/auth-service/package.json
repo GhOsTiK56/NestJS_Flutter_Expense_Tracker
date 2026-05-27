@@ -20,8 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@budgetro/common": "^1.0.0",
-    "@budgetro/contracts": "^1.0.6",
+    "@budgetro/common": "^1.0.1",
+    "@budgetro/contracts": "^1.0.9",
     "@budgetro/core": "^1.0.0",
     "@budgetro/passport": "^1.0.0",
     "@grpc/grpc-js": "^1.14.4",
@@ -29,6 +29,7 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^11.1.24",
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/adapter-pg": "^7.8.0",

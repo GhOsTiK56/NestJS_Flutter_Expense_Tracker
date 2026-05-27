@@ -79,6 +79,7 @@ export const AccountScalarFieldEnum = {
   password: 'password',
   isPhoneVerified: 'isPhoneVerified',
   isEmailVerified: 'isEmailVerified',
+  role: 'role',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

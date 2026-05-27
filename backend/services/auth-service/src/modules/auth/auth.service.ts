@@ -129,6 +129,8 @@ export class AuthService {
 				isEmailVerified: true
 			})
 
+		await this.authRepository.revokeAllActiveRefreshTokens(account.id)
+
 		return await this.generateTokens(account.id)
 	}
 
