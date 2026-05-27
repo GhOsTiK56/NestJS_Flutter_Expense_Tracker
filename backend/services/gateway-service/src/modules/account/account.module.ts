@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config'
 import { ClientsModule, Transport } from '@nestjs/microservices'
 
 import { AccountClientGrpc } from './account.grpc'
+import { AccountController } from './account.controller';
 
 @Module({
 	imports: [
@@ -29,6 +30,7 @@ import { AccountClientGrpc } from './account.grpc'
 			}
 		])
 	],
+	controllers: [AccountController],
 	providers: [AccountClientGrpc],
 	exports: [AccountClientGrpc]
 })

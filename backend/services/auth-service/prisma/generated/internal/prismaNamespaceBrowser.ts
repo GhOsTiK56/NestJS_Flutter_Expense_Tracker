@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   Account: 'Account',
-  RefreshToken: 'RefreshToken'
+  RefreshToken: 'RefreshToken',
+  PendingContactChange: 'PendingContactChange'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -90,14 +91,28 @@ export type AccountScalarFieldEnum = (typeof AccountScalarFieldEnum)[keyof typeo
 export const RefreshTokenScalarFieldEnum = {
   id: 'id',
   accountId: 'accountId',
+  revoked: 'revoked',
   tokenHash: 'tokenHash',
   expiresAt: 'expiresAt',
-  revoked: 'revoked',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type RefreshTokenScalarFieldEnum = (typeof RefreshTokenScalarFieldEnum)[keyof typeof RefreshTokenScalarFieldEnum]
+
+
+export const PendingContactChangeScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  value: 'value',
+  codeHash: 'codeHash',
+  expiresAt: 'expiresAt',
+  accountId: 'accountId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PendingContactChangeScalarFieldEnum = (typeof PendingContactChangeScalarFieldEnum)[keyof typeof PendingContactChangeScalarFieldEnum]
 
 
 export const SortOrder = {

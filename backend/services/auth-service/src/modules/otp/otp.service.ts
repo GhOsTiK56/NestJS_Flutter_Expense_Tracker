@@ -10,7 +10,7 @@ import { RedisService } from '../../infrastructure/redis/redis.service'
 export class OtpService {
 	public constructor(private readonly redisService: RedisService) {}
 
-	public async send(identifier: string, identifiryType: 'phone | email') {
+	public async send(identifier: string, identifiryType: 'phone' | 'email') {
 		const { code, hash } = this.generateCode()
 
 		await this.redisService.set(
@@ -20,7 +20,7 @@ export class OtpService {
 			'300'
 		)
 
-		return code
+		return { code, hash }
 	}
 
 	public async verify(

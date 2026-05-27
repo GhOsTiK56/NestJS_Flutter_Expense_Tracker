@@ -20,21 +20,21 @@ export class AuthController {
 
 	@ApiOperation({
 		summary: 'SignUp',
-		description: 'Register user'
+		description: 'Register user.'
 	})
 	@Post('sign-up')
 	@HttpCode(HttpStatus.OK)
-	public signUp(@Body() dto: SignUpRequest) {
+	public async signUp(@Body() dto: SignUpRequest) {
 		return this.client.signUp(dto)
 	}
 
 	@ApiOperation({
 		summary: 'Send otp code',
-		description: 'Sends a verification code to user phone number or email'
+		description: 'Sends a verification code to user phone number or email.'
 	})
 	@Post('otp/send')
 	@HttpCode(HttpStatus.OK)
-	public sendOtp(@Body() dto: SendOtpRequest) {
+	public async sendOtp(@Body() dto: SendOtpRequest) {
 		return this.client.sendOtp(dto)
 	}
 
@@ -45,13 +45,13 @@ export class AuthController {
 	})
 	@Post('otp/verify')
 	@HttpCode(HttpStatus.OK)
-	public verifyOtp(@Body() dto: VerifyOtpRequest) {
+	public async verifyOtp(@Body() dto: VerifyOtpRequest) {
 		return this.client.verifyOtp(dto)
 	}
 
 	@ApiOperation({
 		summary: 'Refresh access and refresh tokens',
-		description: 'Renews access and refresh tokens'
+		description: 'Renews access and refresh tokens.'
 	})
 	@Post('refresh')
 	@HttpCode(HttpStatus.OK)
@@ -61,7 +61,7 @@ export class AuthController {
 
 	@ApiOperation({
 		summary: 'Logout',
-		description: 'Clears the refresh token and logs the user out'
+		description: 'Clears the refresh token and logs the user out.'
 	})
 	@Post('logout')
 	@HttpCode(HttpStatus.OK)
