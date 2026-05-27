@@ -315,10 +315,10 @@
   resolved "https://registry.yarnpkg.com/@budgetro/common/-/common-1.0.0.tgz#e00a51140896a4ca764dea5869c8c8fc6d9050af"
   integrity sha512-PPTOszKqxL2JaZzqfDZw8xeWFFvjlJmaZF/aw3DempkStN1rfBQKUmB5fy09cbinLwbA4ZeSTUXdS/GZxHxDYQ==
 
-"@budgetro/contracts@^1.0.9":
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.0.9.tgz#1701a198d5035f315dcfbb42ce243ac9be409bc5"
-  integrity sha512-NiUI2DsnyroLKUL9rDOCNDPgsyf29pbmDU7j/cENYexsLH5gf7+3EjGWhUfJ/Y1g+tdmsi8C4QCdyUDYt9p9gw==
+"@budgetro/contracts@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.0.10.tgz#44286dd15a1296434e97d2c0e9b3eeb806c950e2"
+  integrity sha512-yPwhZbHkE7XbAEuuh+p9uUaOZlvwY7yR3huVqevO4o+GkjtTAtR62UySCp6ACdsZzkEhTvVBo8pj56sqvyqXyw==
   dependencies:
     "@nestjs/microservices" "^11.1.24"
     rxjs "^7.8.2"
