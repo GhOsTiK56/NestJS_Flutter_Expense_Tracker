@@ -1,12 +1,12 @@
 {
   "name": "@budgetro/contracts",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Protobuf definitions and generated TypeScript types",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "generate": "protoc -I=./proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit $(find ./proto -name '*.proto')"
+    "generate": "protoc -I ./proto ./proto/*.proto --ts_proto_out=./gen --ts_proto_opt=nestJs=true,package=omit"
   },
   "files": [
     "dist",
