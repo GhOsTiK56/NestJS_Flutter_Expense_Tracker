@@ -1,10 +1,18 @@
-import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common'
+import {
+	Body,
+	Controller,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Post
+} from '@nestjs/common'
 import { ApiOperation } from '@nestjs/swagger'
+
 
 import { AuthClientGrpc } from './auth.grpc'
 import { SendOtpRequest, SignUpRequest, VerifyOtpRequest } from './dto'
+import { LogoutRequest } from './dto/requests/logout.request'
 import { RefreshTokenRequest } from './dto/requests/refresh-token.request'
-import { LogoutRequest } from './dto/requests/logout.request';
 
 @Controller('auth')
 export class AuthController {
