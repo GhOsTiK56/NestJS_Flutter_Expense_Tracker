@@ -11,9 +11,8 @@ datasource db {
 model Account {
   id String @id @default(nanoid())
 
-  phone String? @unique
-  email String? @unique
-
+  phone    String? @unique
+  email    String? @unique
   name     String
   password String
 
@@ -22,26 +21,49 @@ model Account {
 
   role Role @default(USER)
 
+  refreshTokens         RefreshToken[]
+  pengingContactChanges PendingContactChange[]
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-
-  refreshTokens RefreshToken[]
 
   @@map("accounts")
 }
 
 model RefreshToken {
-  id        String   @id @default(nanoid())
-  accountId String
-  tokenHash String   @unique
-  expiresAt DateTime
-  revoked   Boolean  @default(false)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id String @id @default(nanoid())
+
+  accountId String  @map("account_id")
+  revoked   Boolean @default(false)
+
+  tokenHash String   @unique @map("token_hash")
+  expiresAt DateTime @map("expires_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   account Account @relation(fields: [accountId], references: [id])
 
   @@map("refresh_tokens")
+}
+
+model PendingContactChange {
+  id String @id @default(nanoid())
+
+  type  String
+  value String
+
+  codeHash  String   @map("code_hash")
+  expiresAt DateTime @map("expires_at")
+
+  account  Account @relation(fields: [accountId], references: [id], onDelete: Cascade)
+  accountId String  @map("account_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([accountId, type])
+  @@map("pending_contact_changes")
 }
 
 enum Role {

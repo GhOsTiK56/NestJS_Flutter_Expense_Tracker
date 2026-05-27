@@ -27,3 +27,8 @@ export type Account = Prisma.AccountModel
  * 
  */
 export type RefreshToken = Prisma.RefreshTokenModel
+/**
+ * Model PendingContactChange
+ * 
+ */
+export type PendingContactChange = Prisma.PendingContactChangeModel
