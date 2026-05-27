@@ -310,15 +310,15 @@
   resolved "https://registry.yarnpkg.com/@borewit/text-codec/-/text-codec-0.2.2.tgz#75025f735c0983b3a871668804a57387e3649375"
   integrity sha512-DDaRehssg1aNrH4+2hnj1B7vnUGEjU6OIlyRdkMd0aUdIUvKXrJfXsy8LVtXAy7DRvYVluWbMspsRhz2lcW0mQ==
 
-"@budgetro/common@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@budgetro/common/-/common-1.0.0.tgz#e00a51140896a4ca764dea5869c8c8fc6d9050af"
-  integrity sha512-PPTOszKqxL2JaZzqfDZw8xeWFFvjlJmaZF/aw3DempkStN1rfBQKUmB5fy09cbinLwbA4ZeSTUXdS/GZxHxDYQ==
+"@budgetro/common@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@budgetro/common/-/common-1.0.1.tgz#e616e8a2851b814bf00a4a720e10d24471a6d56e"
+  integrity sha512-BmKh2KOMjM5hM4sCrJBleJUkT7tE/JoqS04KQDRzv2LXG0IoL7q8NP6eZijcsF1SZACKBcp15Ais0ZBDFdJlFw==
 
-"@budgetro/contracts@^1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.0.6.tgz#ef8ef1abfb45dfa01e4494b008e710bd9c114a67"
-  integrity sha512-A/XxeTkfQ336CWhN+Mwxet5xEUb3+sK8++nzi8aEw3rJgZHUein/Xk9N8p/TVaYH0Zh2p97DBeD4xwQBkxi0Eg==
+"@budgetro/contracts@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.0.9.tgz#1701a198d5035f315dcfbb42ce243ac9be409bc5"
+  integrity sha512-NiUI2DsnyroLKUL9rDOCNDPgsyf29pbmDU7j/cENYexsLH5gf7+3EjGWhUfJ/Y1g+tdmsi8C4QCdyUDYt9p9gw==
   dependencies:
     "@nestjs/microservices" "^11.1.24"
     rxjs "^7.8.2"
@@ -1057,6 +1057,11 @@
     iterare "1.2.1"
     path-to-regexp "8.4.2"
     tslib "2.8.1"
+
+"@nestjs/mapped-types@*":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-2.1.1.tgz#9530ac3250ab433ba6ef831e9dd5d483f5fc8144"
+  integrity sha512-SCCoMEJ6jdeI5h/N+KCVF1+pmg/hmEkNA5nHTS8Gvww7T/LCl4o1gFLinw2iQ60w7slFkszHcGLKGdazVI4F8A==
 
 "@nestjs/microservices@^11.1.24":
   version "11.1.24"
