@@ -1,4 +1,17 @@
+import { OtpRequestedEvent } from '@budgetro/contracts'
 import { Injectable } from '@nestjs/common'
 
+import { MailService } from '../../infrastructure/mail/mail.service'
+
 @Injectable()
-export class NotificationsService {}
+export class NotificationsService {
+	public constructor(private readonly mailService: MailService) {}
+
+	public async sendOtp(data: OtpRequestedEvent) {
+		const { identifier, code, identifierType } = data
+
+		if (identifierType === 'email')
+			await this.mailService.sendOtp(identifier, code)
+		else console.log('SMS')
+	}
+}
