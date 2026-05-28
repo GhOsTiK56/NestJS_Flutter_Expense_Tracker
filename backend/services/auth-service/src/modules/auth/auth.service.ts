@@ -13,6 +13,7 @@ import { RpcException } from '@nestjs/microservices'
 import { createHash } from 'crypto'
 
 import type { AllConfigs } from '@/config'
+import { MessagingService } from '@/infrastructure/messaging/messaging.service'
 import { UserRepository } from '@/shared/repositories'
 
 import { Account } from '../../../prisma/generated/client'
@@ -30,7 +31,8 @@ export class AuthService {
 		private readonly authRepository: AuthRepository,
 		private readonly userRepository: UserRepository,
 		private readonly otpService: OtpService,
-		private readonly passportService: PassportService
+		private readonly passportService: PassportService,
+		private readonly messagingService: MessagingService
 	) {
 		this.ACCESS_TOKEN_TTL = this.configServive.get('passport.accessTtl', {
 			infer: true
@@ -90,12 +92,16 @@ export class AuthService {
 				details: 'Account not found'
 			})
 
-		const code = await this.otpService.send(
+		const { code } = await this.otpService.send(
 			identifier,
 			identifierType as 'phone' | 'email'
 		)
 
-		console.debug('CODE: ', code)
+		await this.messagingService.otpReqested({
+			identifier,
+			identifierType,
+			code
+		})
 
 		return { ok: true }
 	}
