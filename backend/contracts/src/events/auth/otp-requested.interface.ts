@@ -1,5 +1,5 @@
 export interface OtpRequestedEvent {
   identifier: string
-  type: string
+  identifierType: string
   code: string
 }
