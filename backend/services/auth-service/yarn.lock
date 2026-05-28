@@ -315,10 +315,10 @@
   resolved "https://registry.yarnpkg.com/@budgetro/common/-/common-1.0.1.tgz#e616e8a2851b814bf00a4a720e10d24471a6d56e"
   integrity sha512-BmKh2KOMjM5hM4sCrJBleJUkT7tE/JoqS04KQDRzv2LXG0IoL7q8NP6eZijcsF1SZACKBcp15Ais0ZBDFdJlFw==
 
-"@budgetro/contracts@^1.0.10":
-  version "1.0.10"
-  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.0.10.tgz#44286dd15a1296434e97d2c0e9b3eeb806c950e2"
-  integrity sha512-yPwhZbHkE7XbAEuuh+p9uUaOZlvwY7yR3huVqevO4o+GkjtTAtR62UySCp6ACdsZzkEhTvVBo8pj56sqvyqXyw==
+"@budgetro/contracts@^1.1.0":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.1.1.tgz#a0a9ed75cfc1876201001998f7b9206da8eaf64b"
+  integrity sha512-dZn2zZdBSjY07Q5izCyFmU840x1TPmTAesr+jyAFGrY7KBx1JHO3VWs3g4RvqA2ODdlx8TsWhgEtF6otSKGvcg==
   dependencies:
     "@nestjs/microservices" "^11.1.24"
     rxjs "^7.8.2"
@@ -2097,6 +2097,18 @@ ajv@^8.0.0, ajv@^8.12.0, ajv@^8.9.0:
     fast-uri "^3.0.1"
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
+
+amqp-connection-manager@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/amqp-connection-manager/-/amqp-connection-manager-5.0.0.tgz#3bf72f76e1e041768080227fffab1f9baea70baa"
+  integrity sha512-88yQzqa5RSBgnLl504XjvCQJ7d+osskdwvg35Lwm1LRbfLjNU9p7SQUMSP82BB7mseiq9tIUPJ3HE3eXQbpjEw==
+  dependencies:
+    promise-breaker "^6.0.0"
+
+amqplib@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/amqplib/-/amqplib-2.0.1.tgz#7f14517c1d5f6e8608cf0abf4df817e923eb59b6"
+  integrity sha512-a3P2MgfCf9nzVis12VxWEn0dS6hcqve7dlEAhXDtIWR27BlhtMkILOc+H9aeHjDi6i6r94dYKc2Kx2OFe3avvg==
 
 ansi-colors@4.1.3:
   version "4.1.3"
@@ -4881,6 +4893,11 @@ prisma@^7.8.0:
     "@prisma/studio-core" "0.27.3"
     mysql2 "3.15.3"
     postgres "3.4.7"
+
+promise-breaker@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/promise-breaker/-/promise-breaker-6.0.0.tgz#107d2b70f161236abdb4ac5a736c7eb8df489d0f"
+  integrity sha512-BthzO9yTPswGf7etOBiHCVuugs2N01/Q/94dIPls48z2zCmrnDptUUZzfIb+41xq0MnYZ/BzmOd6ikDR4ibNZA==
 
 proper-lockfile@4.1.2, proper-lockfile@^4.1.2:
   version "4.1.2"
