@@ -4,18 +4,12 @@ package auth.v1;
 
 service AuthService {
   rpc SignUp(SignUpRequest) returns (SignUpResponse);
+  rpc LogIn(LogInRequest) returns (LogInResponse);
   rpc SendOtp(SendOtpRequest) returns (SendOtpResponse);
   rpc VerifyOtp(VerifyOtpRequest) returns (VerifyOtpResponse);
   rpc Refresh(RefreshRequest) returns (RefreshResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
 }
-
-message SendOtpRequest {
-  string identifier = 1;
-  string identifier_type = 2;
-}
-
-message SendOtpResponse { bool ok = 1; }
 
 message SignUpRequest {
   string name = 1;
@@ -25,6 +19,23 @@ message SignUpRequest {
 }
 
 message SignUpResponse { bool ok = 1; }
+
+message LogInRequest {
+  string identifier = 1;
+  string identifier_type = 2;
+  string password = 3;
+}
+
+message LogInResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+message SendOtpRequest {
+  string identifier = 1;
+  string identifier_type = 2;
+}
+
+message SendOtpResponse { bool ok = 1; }
 
 message VerifyOtpRequest {
   string identifier = 1;
@@ -44,10 +55,6 @@ message RefreshResponse {
   string refresh_token = 2;
 }
 
-message LogoutRequest {
-  string refresh_token = 1;
-}
+message LogoutRequest { string refresh_token = 1; }
 
-message LogoutResponse {
-  bool ok = 1;
-}
+message LogoutResponse { bool ok = 1; }
