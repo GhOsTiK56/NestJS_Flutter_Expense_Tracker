@@ -1,5 +1,6 @@
 import type {
 	AuthServiceClient,
+	LogInRequest,
 	RefreshRequest,
 	SendOtpRequest,
 	SignUpRequest,
@@ -22,12 +23,16 @@ export class AuthClientGrpc implements OnModuleInit {
 			this.client.getService<AuthServiceClient>('AuthService')
 	}
 
-	public sendOtp(request: SendOtpRequest) {
-		return this.authService.sendOtp(request)
-	}
-
 	public signUp(request: SignUpRequest) {
 		return this.authService.signUp(request)
+	}
+
+	public logIn(request: LogInRequest) {
+		return this.authService.logIn(request)
+	}
+
+	public sendOtp(request: SendOtpRequest) {
+		return this.authService.sendOtp(request)
 	}
 
 	public verifyOtp(request: VerifyOtpRequest) {
