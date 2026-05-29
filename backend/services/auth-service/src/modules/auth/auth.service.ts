@@ -1,5 +1,6 @@
 import { RpcStatus } from '@budgetro/common'
 import type {
+	LogInRequest,
 	LogoutRequest,
 	RefreshRequest,
 	SendOtpRequest,
@@ -10,6 +11,7 @@ import { PassportService, TokenPayload } from '@budgetro/passport'
 import { Injectable } from '@nestjs/common'
 import { ConfigService } from '@nestjs/config'
 import { RpcException } from '@nestjs/microservices'
+import * as argon2 from 'argon2'
 import { createHash } from 'crypto'
 
 import type { AllConfigs } from '@/config'
@@ -44,22 +46,26 @@ export class AuthService {
 
 	public async signUp(data: SignUpRequest) {
 		const { name, identifier, identifierType } = data
-		const { passwordHash } = this.generatePasswordHash(data)
+		const { passwordHash } = await this.generatePasswordHash(data)
 
-		let account: Account | null
+		const account =
+			identifierType === 'phone'
+				? await this.userRepository.findByPhone(identifier)
+				: await this.userRepository.findByEmail(identifier)
 
-		if (identifierType === 'phone')
-			account = await this.userRepository.findByPhone(identifier)
-		else account = await this.userRepository.findByEmail(identifier)
-
-		if (!account) {
-			account = await this.authRepository.createAccount({
-				name: name,
-				password: passwordHash,
-				email: identifierType === 'email' ? identifier : undefined,
-				phone: identifierType === 'phone' ? identifier : undefined
+		if (account) {
+			throw new RpcException({
+				code: RpcStatus.ALREADY_EXISTS,
+				details: 'Account already exists'
 			})
 		}
+
+		await this.authRepository.createAccount({
+			name: name,
+			password: passwordHash,
+			email: identifierType === 'email' ? identifier : undefined,
+			phone: identifierType === 'phone' ? identifier : undefined
+		})
 
 		await this.sendOtp({
 			identifier,
@@ -69,10 +75,48 @@ export class AuthService {
 		return { ok: true }
 	}
 
-	private generatePasswordHash(data: SignUpRequest) {
+	public async logIn(data: LogInRequest) {
+		const { identifier, identifierType, password } = data
+
+		const account =
+			identifierType === 'phone'
+				? await this.userRepository.findByPhone(identifier)
+				: await this.userRepository.findByEmail(identifier)
+
+		if (!account) {
+			throw new RpcException({
+				code: RpcStatus.NOT_FOUND,
+				details: 'Account does not exist'
+			})
+		}
+
+		const isValid = await this.validatePassword(account.password, password)
+
+		if (!isValid) {
+			throw new RpcException({
+				code: RpcStatus.UNAUTHENTICATED,
+				details: 'Invalid credentials'
+			})
+		}
+
+		await this.authRepository.revokeAllActiveRefreshTokens(account.id)
+
+		return await this.generateTokens(account.id)
+	}
+
+	private async validatePassword(
+		hash: string,
+		password: string
+	): Promise<boolean> {
+		return argon2.verify(hash, password)
+	}
+
+	private async generatePasswordHash(
+		data: SignUpRequest
+	): Promise<{ passwordHash: string }> {
 		const { password } = data
 
-		const passwordHash = createHash('sha256').update(password).digest('hex')
+		const passwordHash: string = await argon2.hash(password)
 
 		return { passwordHash }
 	}

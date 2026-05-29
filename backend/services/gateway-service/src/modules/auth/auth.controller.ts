@@ -2,7 +2,7 @@ import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common'
 import { ApiOperation } from '@nestjs/swagger'
 
 import { AuthClientGrpc } from './auth.grpc'
-import { SendOtpRequest, SignUpRequest, VerifyOtpRequest } from './dto'
+import { LogInRequest, SendOtpRequest, SignUpRequest, VerifyOtpRequest } from './dto'
 import { LogoutRequest } from './dto/requests/logout.request'
 import { RefreshTokenRequest } from './dto/requests/refresh-token.request'
 
@@ -18,6 +18,16 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   public async signUp(@Body() dto: SignUpRequest) {
     return this.client.signUp(dto)
+  }
+
+  @ApiOperation({
+    summary: 'LogIn',
+    description: 'LogIn user'
+  })
+  @Post('log-in')
+  @HttpCode(HttpStatus.OK)
+  public async logIn(@Body() dto: LogInRequest) {
+    return this.client.logIn(dto)
   }
 
   @ApiOperation({

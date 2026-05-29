@@ -1,17 +1,37 @@
-import { OtpRequestedEvent } from '@budgetro/contracts'
+import {
+	EmailChangedEvent,
+	OtpRequestedEvent,
+	PhoneChangedEvent
+} from '@budgetro/contracts'
 import { Injectable } from '@nestjs/common'
 
 import { MailService } from '../../infrastructure/mail/mail.service'
+import { SmsService } from '../../infrastructure/sms/sms.service'
 
 @Injectable()
 export class NotificationsService {
-	public constructor(private readonly mailService: MailService) {}
+	public constructor(
+		private readonly mailService: MailService,
+		private readonly smsService: SmsService
+	) {}
 
 	public async sendOtp(data: OtpRequestedEvent) {
 		const { identifier, code, identifierType } = data
 
 		if (identifierType === 'email')
 			await this.mailService.sendOtp(identifier, code)
-		else console.log('SMS')
+		else await this.smsService.sendOtp(identifier, code)
+	}
+
+	public async sendPhoneChange(data: PhoneChangedEvent) {
+		const { phone, code } = data
+
+		return await this.smsService.sendPhoneChange(phone, code)
+	}
+
+	public async sendEmailChange(data: EmailChangedEvent) {
+		const { email, code } = data
+
+		return await this.mailService.sendEmailChange(email, code)
 	}
 }

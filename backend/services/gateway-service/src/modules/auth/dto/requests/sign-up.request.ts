@@ -1,13 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger'
-import {
-	IsEmail,
-	IsEnum,
-	IsNotEmpty,
-	IsString,
-	MinLength
-} from 'class-validator'
+import { IsEnum, IsNotEmpty, IsString, MinLength, Validate } from 'class-validator'
 
 import { IdentifierType } from './send-otp.request'
+import { IdentifierValidator } from '../../../../shared/validators'
 
 export class SignUpRequest {
 	@ApiProperty({
@@ -25,12 +20,12 @@ export class SignUpRequest {
 		example: 'karen@gmail.com'
 	})
 	@IsString({
-		message: 'The email must be a string'
+		message: 'The identifier must be a string'
 	})
 	@IsNotEmpty({
-		message: 'The email is required to fill in'
+		message: 'The identifier is required to fill in'
 	})
-	@IsEmail()
+	@Validate(IdentifierValidator)
 	public identifier!: string
 
 	@ApiProperty({
@@ -38,7 +33,7 @@ export class SignUpRequest {
 		enum: ['phone', 'email']
 	})
 	@IsEnum(IdentifierType)
-	public identifierType!: 'phone | email'
+	public identifierType!: 'phone' | 'email' 
 
 	@ApiProperty({
 		example: '123456'
