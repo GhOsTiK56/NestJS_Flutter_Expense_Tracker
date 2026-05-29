@@ -1,4 +1,8 @@
-import { OtpRequestedEvent } from '@budgetro/contracts'
+import {
+	EmailChangedEvent,
+	OtpRequestedEvent,
+	PhoneChangedEvent
+} from '@budgetro/contracts'
 import { Inject, Injectable } from '@nestjs/common'
 import type { ClientProxy } from '@nestjs/microservices'
 
@@ -10,5 +14,13 @@ export class MessagingService {
 
 	public async otpReqested(data: OtpRequestedEvent) {
 		return this.client.emit('auth.otp.requested', data)
+	}
+
+	public async phoneChanged(data: PhoneChangedEvent) {
+		return this.client.emit('account.phone.changed', data)
+	}
+
+	public async emailChanged(data: EmailChangedEvent) {
+		return this.client.emit('account.email.changed', data)
 	}
 }

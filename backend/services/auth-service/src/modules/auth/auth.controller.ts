@@ -1,4 +1,6 @@
 import type {
+	LogInRequest,
+	LogInResponse,
 	LogoutRequest,
 	LogoutResponse,
 	RefreshRequest,
@@ -22,6 +24,11 @@ export class AuthController {
 	@GrpcMethod('AuthService', 'SignUp')
 	public async signUp(data: SignUpRequest): Promise<SignUpResponse> {
 		return await this.authService.signUp(data)
+	}
+
+	@GrpcMethod('AuthService', 'LogIn')
+	public async logIn(data: LogInRequest): Promise<LogInResponse> {
+		return await this.authService.logIn(data)
 	}
 
 	@GrpcMethod('AuthService', 'SendOtp')
