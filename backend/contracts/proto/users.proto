@@ -8,7 +8,7 @@ service UsersService {
 }
 
 message GetMeRequest {
-    string id = 1;
+    string account_id = 1;
 }
 
 message GetMeResponse {
@@ -16,7 +16,7 @@ message GetMeResponse {
 }
 
 message CreateUserRequest {
-    string id = 1;
+    string account_id = 1;
 }
 
 message CreateUserResponse {
