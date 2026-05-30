@@ -4,6 +4,9 @@ pnpm-lock.yaml
 .vscode/
 .log
 
+# Prisma
+**/prisma/generated
+
 ### Node ###
 # Logs
 logs
