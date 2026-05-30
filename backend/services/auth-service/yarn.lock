@@ -310,10 +310,15 @@
   resolved "https://registry.yarnpkg.com/@borewit/text-codec/-/text-codec-0.2.2.tgz#75025f735c0983b3a871668804a57387e3649375"
   integrity sha512-DDaRehssg1aNrH4+2hnj1B7vnUGEjU6OIlyRdkMd0aUdIUvKXrJfXsy8LVtXAy7DRvYVluWbMspsRhz2lcW0mQ==
 
-"@budgetro/common@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@budgetro/common/-/common-1.0.1.tgz#e616e8a2851b814bf00a4a720e10d24471a6d56e"
-  integrity sha512-BmKh2KOMjM5hM4sCrJBleJUkT7tE/JoqS04KQDRzv2LXG0IoL7q8NP6eZijcsF1SZACKBcp15Ais0ZBDFdJlFw==
+"@budgetro/common@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@budgetro/common/-/common-1.1.2.tgz#41bc678cf129ab9cab2e3816e6d949349c83ebda"
+  integrity sha512-j5JE1A6cX+4hDn7v1sxfVS8/05fViFB13Kp8gXfFlzOKLIc6nb71DzlGibOBiLMXhhsX49qNfHaKJmOhRYY1Tw==
+  dependencies:
+    "@budgetro/contracts" "^1.2.2"
+    "@nestjs/common" "^11.1.24"
+    "@nestjs/config" "^4.0.4"
+    "@nestjs/microservices" "^11.1.24"
 
 "@budgetro/contracts@^1.2.2":
   version "1.2.2"
