@@ -43,8 +43,8 @@ class ValidatorUtility {
     if (value == null || value.isEmpty) {
       return context.l10n.fieldRequired(fieldName);
     }
-    if (value.length < 8) {
-      return context.l10n.fieldTooShort(fieldName, 8);
+    if (value.length < 6) {
+      return context.l10n.fieldTooShort(fieldName, 6);
     }
     return null;
   }
