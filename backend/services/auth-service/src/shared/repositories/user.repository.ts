@@ -35,4 +35,12 @@ export class UserRepository {
 			data
 		})
 	}
+
+	public async delete(id: string): Promise<Account> {
+		return await this.prismaService.account.delete({
+			where: {
+				id
+			}
+		})
+	}
 }
