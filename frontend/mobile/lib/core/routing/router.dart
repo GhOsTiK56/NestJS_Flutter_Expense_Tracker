@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:budgetro/core/routing/rout_names.dart';
 import 'package:budgetro/features/auth/presentation/pages/log_in/login_page.dart';
 import 'package:budgetro/features/auth/presentation/pages/sign_up/sign_up_page.dart';
-import 'package:budgetro/features/home/presentation/home_page.dart';
+import 'package:budgetro/features/home/presentation/pages/home_page.dart';
 import 'package:budgetro/features/splash/presentation/pages/splash_page.dart';
 
 final appRouter = GoRouter(

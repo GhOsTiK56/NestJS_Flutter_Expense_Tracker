@@ -20,6 +20,7 @@ import { UserRepository } from '@/shared/repositories'
 
 import { Account } from '../../../prisma/generated/client'
 import { OtpService } from '../otp/otp.service'
+import { UsersClientGrpc } from '../users/users.grpc'
 
 import { AuthRepository } from './auth.repository'
 
@@ -34,7 +35,8 @@ export class AuthService {
 		private readonly userRepository: UserRepository,
 		private readonly otpService: OtpService,
 		private readonly passportService: PassportService,
-		private readonly messagingService: MessagingService
+		private readonly messagingService: MessagingService,
+		private readonly usersClient: UsersClientGrpc
 	) {
 		this.ACCESS_TOKEN_TTL = this.configServive.get('passport.accessTtl', {
 			infer: true
@@ -45,7 +47,7 @@ export class AuthService {
 	}
 
 	public async signUp(data: SignUpRequest) {
-		const { name, identifier, identifierType } = data
+		const { identifier, identifierType } = data
 		const { passwordHash } = await this.generatePasswordHash(data)
 
 		const account =
@@ -61,7 +63,6 @@ export class AuthService {
 		}
 
 		await this.authRepository.createAccount({
-			name: name,
 			password: passwordHash,
 			email: identifierType === 'email' ? identifier : undefined,
 			phone: identifierType === 'phone' ? identifier : undefined
@@ -180,6 +181,8 @@ export class AuthService {
 			await this.userRepository.update(account.id, {
 				isEmailVerified: true
 			})
+
+		this.usersClient.create({ accountId: account.id }).subscribe()
 
 		await this.authRepository.revokeAllActiveRefreshTokens(account.id)
 

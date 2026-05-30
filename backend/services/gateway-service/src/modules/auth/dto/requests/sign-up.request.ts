@@ -6,17 +6,6 @@ import { IdentifierValidator } from '../../../../shared/validators'
 
 export class SignUpRequest {
 	@ApiProperty({
-		example: 'Karen'
-	})
-	@IsString({
-		message: 'The name must be a string'
-	})
-	@IsNotEmpty({
-		message: 'The name is required to fill in'
-	})
-	public name!: string
-
-	@ApiProperty({
 		example: 'karen@gmail.com'
 	})
 	@IsString({

@@ -23,7 +23,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   ) async {
     emit(SignUpLoading());
     final request = SignUpRequest(
-      name: event.name,
       identifier: event.identifier,
       identifierType: event.type,
       password: event.password,

@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@budgetro/common": "^1.0.1",
-    "@budgetro/contracts": "^1.1.2",
+    "@budgetro/contracts": "^1.2.2",
     "@budgetro/core": "^1.0.0",
     "@budgetro/passport": "^1.0.0",
     "@grpc/grpc-js": "^1.14.4",

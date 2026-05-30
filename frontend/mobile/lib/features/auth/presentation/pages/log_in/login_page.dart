@@ -21,7 +21,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController(text: 'karen@gmail.com');
-  final _passwordController = TextEditingController(text: '12345678');
+  final _passwordController = TextEditingController(text: '123456');
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -46,6 +46,8 @@ class _LoginPageState extends State<LoginPage> {
       '${_emailController.text} '
       '${_passwordController.text}',
     );
+
+    context.go(Routes.home);
   }
 
   void _toSignUpPage() {
