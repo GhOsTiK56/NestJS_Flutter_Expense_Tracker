@@ -7,6 +7,16 @@ pnpm-lock.yaml
 # Prisma
 **/prisma/generated
 
+# Dart generated files
+**/*.g.dart
+**/*.freezed.dart
+**/*.mocks.dart
+
+# protobuf / grpc
+**/*.pb.dart
+**/*.pbgrpc.dart
+**/*.pbenum.dart
+
 ### Node ###
 # Logs
 logs
