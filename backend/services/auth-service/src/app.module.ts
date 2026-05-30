@@ -14,6 +14,11 @@ import { UsersModule } from './modules/users/user.module'
 	imports: [
 		ConfigModule.forRoot({
 			isGlobal: true,
+			envFilePath: [
+				`.env.${process.env.NODE_ENV}.local`,
+				`.env.${process.env.NODE_ENV}`,
+				`.env`
+			],
 			load: [dataBaseEnv, grpcEnv, passportEnv, redisEnv, rmqEnv]
 		}),
 		PrismaModule,
