@@ -13,7 +13,6 @@ model Account {
 
   phone    String? @unique
   email    String? @unique
-  name     String
   password String
 
   isPhoneVerified Boolean @default(false) @map("is_phone_verified")
