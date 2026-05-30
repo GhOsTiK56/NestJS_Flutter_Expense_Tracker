@@ -1,37 +1,11 @@
-import { PROTO_PATHS } from '@budgetro/contracts'
+import { GrpcModule } from '@budgetro/common'
 import { Module } from '@nestjs/common'
-import { ConfigService } from '@nestjs/config'
-import { ClientsModule, Transport } from '@nestjs/microservices'
-
-import { AccountModule } from '../account/account.module'
 
 import { AuthController } from './auth.controller'
 import { AuthClientGrpc } from './auth.grpc'
 
 @Module({
-	imports: [
-		ClientsModule.registerAsync([
-			{
-				name: 'AUTH_PACKAGE',
-				useFactory: (configService: ConfigService) => ({
-					transport: Transport.GRPC,
-					options: {
-						package: 'auth.v1',
-						protoPath: PROTO_PATHS.AUTH,
-						url: configService.getOrThrow<string>('AUTH_GRPC_URL'),
-						loader: {
-							keepCase: false,
-							longs: String,
-							enums: String,
-							defaults: true,
-							oneofs: true
-						}
-					}
-				}),
-				inject: [ConfigService]
-			}
-		]),
-	],
+	imports: [GrpcModule.register(['AUTH_PACKAGE'])],
 	controllers: [AuthController],
 	providers: [AuthClientGrpc]
 })

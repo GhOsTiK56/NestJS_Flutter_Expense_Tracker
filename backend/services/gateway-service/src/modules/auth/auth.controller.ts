@@ -2,72 +2,77 @@ import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common'
 import { ApiOperation } from '@nestjs/swagger'
 
 import { AuthClientGrpc } from './auth.grpc'
-import { LogInRequest, SendOtpRequest, SignUpRequest, VerifyOtpRequest } from './dto'
+import {
+	LogInRequest,
+	SendOtpRequest,
+	SignUpRequest,
+	VerifyOtpRequest
+} from './dto'
 import { LogoutRequest } from './dto/requests/logout.request'
 import { RefreshTokenRequest } from './dto/requests/refresh-token.request'
 
 @Controller('auth')
 export class AuthController {
-  public constructor(private readonly client: AuthClientGrpc) { }
+	public constructor(private readonly client: AuthClientGrpc) {}
 
-  @ApiOperation({
-    summary: 'SignUp',
-    description: 'Register user.'
-  })
-  @Post('sign-up')
-  @HttpCode(HttpStatus.OK)
-  public async signUp(@Body() dto: SignUpRequest) {
-    return this.client.signUp(dto)
-  }
+	@ApiOperation({
+		summary: 'SignUp',
+		description: 'Register user.'
+	})
+	@Post('sign-up')
+	@HttpCode(HttpStatus.OK)
+	public async signUp(@Body() dto: SignUpRequest) {
+		return this.client.call('signUp', dto)
+	}
 
-  @ApiOperation({
-    summary: 'LogIn',
-    description: 'LogIn user'
-  })
-  @Post('log-in')
-  @HttpCode(HttpStatus.OK)
-  public async logIn(@Body() dto: LogInRequest) {
-    return this.client.logIn(dto)
-  }
+	@ApiOperation({
+		summary: 'LogIn',
+		description: 'LogIn user'
+	})
+	@Post('log-in')
+	@HttpCode(HttpStatus.OK)
+	public async logIn(@Body() dto: LogInRequest) {
+		return this.client.call('logIn', dto)
+	}
 
-  @ApiOperation({
-    summary: 'Send otp code',
-    description: 'Sends a verification code to user phone number or email.'
-  })
-  @Post('otp/send')
-  @HttpCode(HttpStatus.OK)
-  public async sendOtp(@Body() dto: SendOtpRequest) {
-    return this.client.sendOtp(dto)
-  }
+	@ApiOperation({
+		summary: 'Send otp code',
+		description: 'Sends a verification code to user phone number or email.'
+	})
+	@Post('otp/send')
+	@HttpCode(HttpStatus.OK)
+	public async sendOtp(@Body() dto: SendOtpRequest) {
+		return this.client.call('sendOtp', dto)
+	}
 
-  @ApiOperation({
-    summary: 'Verify otp code',
-    description:
-      'Verifies the code sent to the user phone number or email and returns a access token.'
-  })
-  @Post('otp/verify')
-  @HttpCode(HttpStatus.OK)
-  public async verifyOtp(@Body() dto: VerifyOtpRequest) {
-    return this.client.verifyOtp(dto)
-  }
+	@ApiOperation({
+		summary: 'Verify otp code',
+		description:
+			'Verifies the code sent to the user phone number or email and returns a access token.'
+	})
+	@Post('otp/verify')
+	@HttpCode(HttpStatus.OK)
+	public async verifyOtp(@Body() dto: VerifyOtpRequest) {
+		return this.client.call('verifyOtp', dto)
+	}
 
-  @ApiOperation({
-    summary: 'Refresh access and refresh tokens',
-    description: 'Renews access and refresh tokens.'
-  })
-  @Post('refresh')
-  @HttpCode(HttpStatus.OK)
-  public async refresh(@Body() dto: RefreshTokenRequest) {
-    return this.client.refresh(dto)
-  }
+	@ApiOperation({
+		summary: 'Refresh access and refresh tokens',
+		description: 'Renews access and refresh tokens.'
+	})
+	@Post('refresh')
+	@HttpCode(HttpStatus.OK)
+	public async refresh(@Body() dto: RefreshTokenRequest) {
+		return this.client.call('refresh', dto)
+	}
 
-  @ApiOperation({
-    summary: 'Logout',
-    description: 'Clears the refresh token and logs the user out.'
-  })
-  @Post('logout')
-  @HttpCode(HttpStatus.OK)
-  public async logout(@Body() dto: LogoutRequest) {
-    return this.client.logout(dto)
-  }
+	@ApiOperation({
+		summary: 'Logout',
+		description: 'Clears the refresh token and logs the user out.'
+	})
+	@Post('logout')
+	@HttpCode(HttpStatus.OK)
+	public async logout(@Body() dto: LogoutRequest) {
+		return this.client.call('logout', dto)
+	}
 }

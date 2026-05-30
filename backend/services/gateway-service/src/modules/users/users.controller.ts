@@ -1,12 +1,18 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Patch } from '@nestjs/common'
+import {
+	Body,
+	Controller,
+	Get,
+	HttpCode,
+	HttpStatus,
+	Patch
+} from '@nestjs/common'
 import { ApiBearerAuth, ApiOkResponse, ApiOperation } from '@nestjs/swagger'
-import { lastValueFrom } from 'rxjs'
 
 import { CurrentUser, Protected } from '../../shared/decorators'
 
 import { GetMeResponse } from './dto'
+import { PatchUserRequest } from './dto/requests'
 import { UsersClientGrpc } from './users.grpc'
-import { PatchUserRequest } from './dto/requests';
 
 @Controller('users')
 export class UsersController {
@@ -24,11 +30,7 @@ export class UsersController {
 	@Get('@me')
 	@HttpCode(HttpStatus.OK)
 	public async getMe(@CurrentUser() userId: string) {
-		const { user } = await lastValueFrom(
-			this.client.getMe({
-				accountId: userId
-			})
-		)
+		const { user } = await this.client.call('getMe', { accountId: userId })
 
 		return {
 			id: user?.id,
@@ -43,7 +45,10 @@ export class UsersController {
 	@Protected()
 	@Patch('@me')
 	@HttpCode(HttpStatus.OK)
-	public async patchUser(@CurrentUser() userId: string, @Body() dto: PatchUserRequest){
-		return await this.client.patchUser({userId, ...dto})	
+	public async patchUser(
+		@CurrentUser() userId: string,
+		@Body() dto: PatchUserRequest
+	) {
+		return await this.client.call('patchUser', { userId, ...dto })
 	}
 }
