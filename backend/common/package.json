@@ -1,6 +1,6 @@
 {
   "name": "@budgetro/common",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Core shared components for Budgetro microservice ecosystem",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
