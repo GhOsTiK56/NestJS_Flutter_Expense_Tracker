@@ -8,7 +8,6 @@ part of 'sign_up_request.dart';
 
 SignUpRequest _$SignUpRequestFromJson(Map<String, dynamic> json) =>
     SignUpRequest(
-      name: json['name'] as String,
       identifier: json['identifier'] as String,
       identifierType: $enumDecode(_$LoginTypeEnumMap, json['identifierType']),
       password: json['password'] as String,
@@ -16,7 +15,6 @@ SignUpRequest _$SignUpRequestFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$SignUpRequestToJson(SignUpRequest instance) =>
     <String, dynamic>{
-      'name': instance.name,
       'identifier': instance.identifier,
       'identifierType': _$LoginTypeEnumMap[instance.identifierType]!,
       'password': instance.password,

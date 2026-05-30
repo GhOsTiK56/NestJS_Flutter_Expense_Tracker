@@ -22,10 +22,9 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-  final _nameController = TextEditingController(text: 'Karen');
-  final _emailController = TextEditingController(text: 'Karen@gmail.com');
-  final _passwordController = TextEditingController(text: '12345678');
-  final _repeatPasswordController = TextEditingController(text: '12345678');
+  final _emailController = TextEditingController(text: 'karen@gmail.com');
+  final _passwordController = TextEditingController(text: '123456');
+  final _repeatPasswordController = TextEditingController(text: '123456');
   final _formKey = GlobalKey<FormState>();
   final LoginType type = LoginType.email;
   //TODO: Разобраться с этой переменной, по моему она тут излишня
@@ -42,7 +41,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _repeatPasswordController.dispose();
@@ -55,7 +53,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
     _bloc.add(
       SignUpSubmitted(
-        name: _nameController.text,
         identifier: _emailController.text.trim().toLowerCase(),
         type: type,
         password: _passwordController.text,
@@ -176,22 +173,6 @@ class _SignUpPageState extends State<SignUpPage> {
                       key: _formKey,
                       child: Column(
                         children: [
-                          // First Name Text Field
-                          AuthTextField(
-                            controller: _nameController,
-                            labelText: context.l10n.name,
-                            hintText: context.l10n.nameHint,
-                            prefixIcon: Icons.person,
-                            textCapitalization: TextCapitalization.words,
-                            textInputAction: TextInputAction.next,
-                            validator: (value) => ValidatorUtility.validateName(
-                              value,
-                              context.l10n.name,
-                              context,
-                            ),
-                          ),
-                          const SizedBox(height: 20),
-
                           // Email Text Field
                           AuthTextField(
                             controller: _emailController,

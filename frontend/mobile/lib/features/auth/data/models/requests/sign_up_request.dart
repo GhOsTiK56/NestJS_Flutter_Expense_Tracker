@@ -5,8 +5,6 @@ part 'sign_up_request.g.dart';
 
 @JsonSerializable()
 class SignUpRequest {
-  @JsonKey(name: 'name')
-  final String name;
   @JsonKey(name: 'identifier')
   final String identifier;
   @JsonKey(name: 'identifierType')
@@ -15,7 +13,6 @@ class SignUpRequest {
   final String password;
 
   SignUpRequest({
-    required this.name,
     required this.identifier,
     required this.identifierType,
     required this.password,
