@@ -15,5 +15,10 @@ export const GRPC_CLIENTS = {
 		package: 'users.v1',
 		protoPath: PROTO_PATHS.USERS,
 		env: 'USERS_GRPC_URL'
+	},
+	TRANSACTIONS_PACKAGE: {
+		package: 'transactions.v1',
+		protoPath: PROTO_PATHS.TRANSACTIONS,
+		env: 'TRANSACTIONS_GRPC_URL'
 	}
 } as const
