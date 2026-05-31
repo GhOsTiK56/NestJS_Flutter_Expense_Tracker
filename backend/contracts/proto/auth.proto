@@ -9,6 +9,7 @@ service AuthService {
   rpc VerifyOtp(VerifyOtpRequest) returns (VerifyOtpResponse);
   rpc Refresh(RefreshRequest) returns (RefreshResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse);
 }
 
 message SignUpRequest {
@@ -57,3 +58,7 @@ message RefreshResponse {
 message LogoutRequest { string refresh_token = 1; }
 
 message LogoutResponse { bool ok = 1; }
+
+message DeleteAccountRequest { string account_id = 1; }
+
+message DeleteAccountResponse { bool ok = 1; }
