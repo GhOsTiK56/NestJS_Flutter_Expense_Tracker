@@ -79,10 +79,10 @@
   resolved "https://registry.yarnpkg.com/@borewit/text-codec/-/text-codec-0.2.2.tgz#75025f735c0983b3a871668804a57387e3649375"
   integrity sha512-DDaRehssg1aNrH4+2hnj1B7vnUGEjU6OIlyRdkMd0aUdIUvKXrJfXsy8LVtXAy7DRvYVluWbMspsRhz2lcW0mQ==
 
-"@budgetro/contracts@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.2.2.tgz#20c93983ee435e89f4c45832b7055a497a2e071a"
-  integrity sha512-/L6cz/ISBM0RQD9x3+SqJEPq6ISs1mJVwHycRyzxOgjN4235SLgPMVZgiWoPOttpdeulkLBcr4MVT4/z/CFWVw==
+"@budgetro/contracts@^1.2.5":
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/@budgetro/contracts/-/contracts-1.2.5.tgz#194e99e1e2d76a2cafe5cc21e72cb35a152aa268"
+  integrity sha512-S4r0bvr+QKNBcGWpZN3PhCWbb4tPluBuHCm+7CaupGyJJXefI5HEFbV/uP7W6P2xRMrK0jOT1lNVYEeTdCJJ3Q==
   dependencies:
     "@nestjs/microservices" "^11.1.24"
     rxjs "^7.8.2"
