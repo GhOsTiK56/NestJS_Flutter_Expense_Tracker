@@ -4,6 +4,8 @@ pnpm-lock.yaml
 .vscode/
 .log
 
+**/contracts/gen
+
 # Prisma
 **/prisma/generated
 

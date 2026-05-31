@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package transactions.v1;
+
+service TransactionsService {
+  rpc CreateTransaction(CreateTransactionRequest) returns (TransactionResponse);
+  rpc GetTransaction(GetTransactionRequest) returns (TransactionResponse);
+  rpc UpdateTransaction(UpdateTransactionRequest) returns (TransactionResponse);
+  rpc DeleteTransaction(DeleteTransactionRequest)
+      returns (DeleteTransactionResponse);
+}
+
+message CreateTransactionRequest {
+  string account_id = 1;
+  string category_id = 2;
+  double amount = 3;
+  string type = 4;
+  string payment_method = 5;
+  string description = 6;
+  string date = 7;
+}
+
+message TransactionResponse {
+  string transaction_id = 1;
+  string account_id = 2;
+  string category_id = 3;
+  double amount = 4;
+  string type = 5;
+  string payment_method = 6;
+  string description = 7;
+  string date = 8;
+}
+
+message GetTransactionRequest {
+  string account_id = 1;
+  int32 limit = 2;
+  string cursor = 3;
+  string category_id = 4;
+  string type = 5;
+  string payment_method = 6;
+}
+
+message UpdateTransactionRequest {
+  string transaction_id = 1;
+  string account_id = 2;
+  double amount = 3;
+  string description = 4;
+}
+
+message DeleteTransactionRequest {
+  string transaction_id = 1;
+  string account_id = 2;
+}
+
+message DeleteTransactionResponse { bool ok = 1; }
